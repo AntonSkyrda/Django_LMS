@@ -6,7 +6,7 @@ from group.models import Group
 class GroupAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "course_number",
+        "year_number",
     )
 
 
