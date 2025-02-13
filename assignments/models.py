@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.db import models
-from user.models import User
 from course.models import Course
 from group.models import Group
+
+
+User = get_user_model()
 
 
 class TeachingAssignment(models.Model):
