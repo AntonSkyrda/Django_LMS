@@ -8,7 +8,7 @@ User = get_user_model()
 class Group(models.Model):
     name = models.CharField(max_length=255)
     course_number = models.PositiveIntegerField()
-    students = models.ManyToManyField(User, related_name="groups", blank=True)
+    students = models.ManyToManyField(User, related_name="group_students", blank=True)
 
     def __str__(self):
         return f"{self.name} ({self.course_number})"
