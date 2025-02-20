@@ -9,17 +9,15 @@ from task.views import (
 )
 
 urlpatterns = [
-    path("task/", TaskListCreateView.as_view(), name="task-list-create"),
+    path("", TaskListCreateView.as_view(), name="task-list-create"),
+    path("submission", SubmissionListCreateView.as_view(), name="task-list-create"),
     path(
-        "task/submission", SubmissionListCreateView.as_view(), name="task-list-create"
-    ),
-    path(
-        "task/<int:pk>",
+        "<int:pk>",
         TaskRetrieveUpdateDestroyView.as_view(),
         name="task-detail-update-delete",
     ),
     path(
-        "task/submission/<int:pk>",
+        "submission/<int:pk>",
         SubmissionRetrieveUpdateDestroyView.as_view(),
         name="task-detail-update-delete",
     ),
