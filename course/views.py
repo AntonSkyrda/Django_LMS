@@ -5,7 +5,6 @@ from user.permissions import IsStudent, IsTeacher, IsAdmin
 
 
 class CourseListCreateView(generics.ListCreateAPIView):
-
     serializer_class = CourseSerializer
 
     def get_queryset(self):
@@ -26,7 +25,6 @@ class CourseListCreateView(generics.ListCreateAPIView):
 
 
 class CourseRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-
     serializer_class = CourseDetailSerializer
 
     def get_queryset(self):
