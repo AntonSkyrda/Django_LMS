@@ -14,7 +14,7 @@ class GroupListCreateView(generics.ListCreateAPIView):
             return Group.objects.filter(students=user)
 
         if user.role == "teacher":
-            return Group.objects.filter(course__teacher=user)
+            return Group.objects.filter(courses__teacher=user)
 
         return Group.objects.all()
 
@@ -34,7 +34,7 @@ class GroupRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
             return Group.objects.filter(students=user)
 
         if user.role == "teacher":
-            return Group.objects.filter(course__teacher=user)
+            return Group.objects.filter(courses__teacher=user)
 
         return Group.objects.all()
 
