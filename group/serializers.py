@@ -7,7 +7,7 @@ from user.serializers import UserSerializer
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = ("id", "year_number", "students")
+        fields = ("id", "name", "year_number", "students")
 
 
 class GroupDetailSerializer(serializers.ModelSerializer):
@@ -15,4 +15,4 @@ class GroupDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Group
-        fields = ("id", "year_number", "students")
+        fields = ("id", "name", "year_number", "students")
