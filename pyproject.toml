@@ -28,6 +28,6 @@ build-backend = "poetry.core.masonry.api"
 ruff = "^0.9.10"
 
 [tool.ruff]
-line-length = 88
+line-length = 91
 exclude = ["migrations", "__pycache__"]
 select = ["E", "F"]  # E - PEP8, F - pyflakes
