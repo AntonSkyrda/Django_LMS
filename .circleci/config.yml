@@ -39,9 +39,12 @@ jobs:
           command: |
             python manage.py migrate
       - run:
-          name: Запуск тестів
+          name: run tests
           command: |
             python manage.py test
+      - run:
+          name: Run Ruff (PEP8 check)
+          command: poetry run ruff check .
 
   frontend-build:
     docker:

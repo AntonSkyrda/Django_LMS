@@ -23,3 +23,11 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.10"
+
+[tool.ruff]
+line-length = 88
+exclude = ["migrations", "__pycache__"]
+select = ["E", "F"]  # E - PEP8, F - pyflakes
