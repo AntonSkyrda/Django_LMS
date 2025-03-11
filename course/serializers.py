@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from course.models import Course
-from group.serializers import GroupDetailSerializer, GroupSerializer
+from group.serializers import GroupDetailSerializer
 from user.serializers import UserSerializer
 
 

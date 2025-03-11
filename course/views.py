@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from course.models import Course
 from course.serializers import CourseSerializer, CourseDetailSerializer
-from user.permissions import IsStudent, IsTeacher, IsAdmin
+from user.permissions import IsAdmin
 
 
 class CourseListCreateView(generics.ListCreateAPIView):
