@@ -14,7 +14,11 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "django-lms.duckdns.org",
+    "127.0.0.1",
+    "localhost",
+]
 
 
 INSTALLED_APPS = [
