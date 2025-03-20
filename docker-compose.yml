@@ -44,6 +44,7 @@ services:
       - static_volume:/app/static
       - media_volume:/app/media
       - /etc/letsencrypt/live/django-lms.duckdns.org:/etc/letsencrypt/live/django-lms.duckdns.org
+      - /etc/letsencrypt/archive/django-lms.duckdns.org:/etc/letsencrypt/archive/django-lms.duckdns.org/
     depends_on:
       - backend
       - frontend
