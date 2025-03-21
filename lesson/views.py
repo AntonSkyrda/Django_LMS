@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from lesson.models import Lesson
 from lesson.serializers import LessonSerializer, LessonDetailSerializer
-from user.permissions import IsStudent, IsTeacher, IsAdmin
+from user.permissions import IsTeacher
 
 
 class LessonListCreateView(generics.ListCreateAPIView):
