@@ -1,0 +1,68 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+  python: circleci/python@2.1.1
+
+jobs:
+  backend-tests:
+    docker:
+      - image: cimg/python:3.11
+        environment:
+          DJANGO_SECRET_KEY: test_secret
+          DEBUG: 1
+          DB_NAME: test_db
+          DB_USER: test_user
+          DB_PASSWORD: test_pass
+          DB_HOST: localhost
+          DB_PORT: 5432
+      - image: cimg/postgres:15.4
+        environment:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_pass
+          POSTGRES_DB: test_db
+    steps:
+      - checkout
+      - run:
+          name: install Poetry
+          command: |
+            curl -sSL https://install.python-poetry.org | python3 -
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: install dependencies
+          command: |
+            poetry config virtualenvs.create false
+            poetry install --no-interaction --no-root
+      - run:
+          name: run migrations
+          command: |
+            python manage.py migrate
+      - run:
+          name: run tests
+          command: |
+            python manage.py test
+      - run:
+          name: Run Ruff (PEP8 check)
+          command: poetry run ruff check .
+
+  frontend-build:
+    docker:
+      - image: cimg/node:18.20
+    working_directory: ~/project/client
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          name: install dependencies
+          command: npm install
+      - run:
+          name: build React
+          command: npm run build
+
+workflows:
+  version: 2
+  test-and-build:
+    jobs:
+      - backend-tests
+      - frontend-build

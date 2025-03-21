@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from group.models import Group
 from group.serializers import GroupSerializer, GroupDetailSerializer
-from user.permissions import IsStudent, IsTeacher, IsAdmin
+from user.permissions import IsAdmin
 
 
 class GroupListCreateView(generics.ListCreateAPIView):
@@ -14,7 +14,7 @@ class GroupListCreateView(generics.ListCreateAPIView):
             return Group.objects.filter(students=user)
 
         if user.role == "teacher":
-            return Group.objects.filter(course__teacher=user)
+            return Group.objects.filter(courses__teacher=user)
 
         return Group.objects.all()
 
@@ -34,7 +34,7 @@ class GroupRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
             return Group.objects.filter(students=user)
 
         if user.role == "teacher":
-            return Group.objects.filter(course__teacher=user)
+            return Group.objects.filter(courses__teacher=user)
 
         return Group.objects.all()
 
