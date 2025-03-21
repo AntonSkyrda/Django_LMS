@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from group.models import Group
 from group.serializers import GroupSerializer, GroupDetailSerializer
-from user.permissions import IsStudent, IsTeacher, IsAdmin
+from user.permissions import IsAdmin
 
 
 class GroupListCreateView(generics.ListCreateAPIView):
