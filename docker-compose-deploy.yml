@@ -8,14 +8,10 @@ services:
     volumes:
       - static_volume:/app/static
       - media_volume:/app/media
-    environment:
-      - DEBUG=True
-    env_file:
-      - .env
-    ports:
-      - "8000:8000"
     depends_on:
       - db
+    env_file:
+      - .env
     restart: always
 
   frontend:
@@ -23,29 +19,20 @@ services:
     container_name: react_app
     volumes:
       - frontend_build:/usr/share/nginx/html
-    ports:
-      - "3000:3000"
     restart: always
 
   db:
     image: postgres:15
     container_name: postgres_db
     restart: always
-    environment:
-      - POSTGRES_USER=your_user
-      - POSTGRES_PASSWORD=your_password
-      - POSTGRES_DB=your_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
     env_file:
       - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   nginx:
-    image: nginx:latest
-    container_name: nginx_proxy
     build: ./nginx
+    container_name: nginx_proxy
     ports:
       - "80:80"
       - "443:443"
@@ -56,6 +43,8 @@ services:
       - frontend_build:/usr/share/nginx/html
       - static_volume:/app/static
       - media_volume:/app/media
+      - /etc/letsencrypt/live/django-lms.duckdns.org:/etc/letsencrypt/live/django-lms.duckdns.org
+      - /etc/letsencrypt/archive/django-lms.duckdns.org:/etc/letsencrypt/archive/django-lms.duckdns.org/
     depends_on:
       - backend
       - frontend
