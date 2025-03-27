@@ -28,7 +28,7 @@ export function useLogin() {
           type: "Bearer",
         },
       });
-      navigate("/dashboard", { replace: true });
+      navigate("/home", { replace: true });
     },
   });
 

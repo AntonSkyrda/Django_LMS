@@ -1,3 +1,3 @@
 export default function PageNotFound() {
-  return <div></div>;
+  return <div>Такої сторінки не існує</div>;
 }

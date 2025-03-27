@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const courseSchema = z.object({
-  id: z.number().int().optional(),
+  id: z.number().int(),
   name: z.string().max(255),
   description: z.string(),
   teacher: z.number().int().optional(),

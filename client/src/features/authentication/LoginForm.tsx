@@ -1,6 +1,6 @@
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
+import { Input } from "../../ui/input";
 
 import { FieldValues, useForm } from "react-hook-form";
 import { useLogin } from "./useLogin";

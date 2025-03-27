@@ -9,7 +9,13 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import AppLayout from "./ui/AppLayout";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
+import Courses from "./pages/Courses";
+import Groups from "./pages/Groups";
+import Lessons from "./pages/Lessons";
+import Tasks from "./pages/Tasks";
+import Users from "./pages/Users";
+import Course from "./pages/Course";
 
 interface IUserData {
   name: string;
@@ -46,8 +52,14 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              <Route index element={<Navigate replace to="dashboard" />} />
-              <Route path="dashboard" element={<Dashboard />} />
+              <Route index element={<Navigate replace to="home" />} />
+              <Route path="home" element={<Home />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="courses/:courseId" element={<Course />} />
+              <Route path="groups" element={<Groups />} />
+              <Route path="lessons" element={<Lessons />} />
+              <Route path="tasks" element={<Tasks />} />
+              <Route path="users" element={<Users />} />
             </Route>
 
             <Route path="login" element={<Login />} />

@@ -23,4 +23,3 @@ FROM nginx:latest AS serve
 COPY --from=build /app/dist /usr/share/nginx/html
 
 CMD ["nginx", "-g", "daemon off;"]
-
