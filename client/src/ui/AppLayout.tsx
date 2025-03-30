@@ -6,7 +6,7 @@ export default function AppLayout() {
   return (
     <SidebarProvider defaultOpen={false}>
       <AppSidebar />
-      <div className="grid w-full grid-rows-[auto_1fr]">
+      <div className="grid w-full">
         <main className="overflow-scroll">
           <Outlet />
         </main>

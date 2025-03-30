@@ -5,8 +5,9 @@ import CourseCard from "./CourseCard";
 
 function CoursesList() {
   const { isLoading, courses } = useCourses();
+  console.log(courses);
   if (isLoading) return <Spinner />;
-  if (!courses) return <Empty resourceName="Курси" />;
+  if (!courses?.length) return <Empty resourceName="Курси" />;
   return (
     <ul className="grid grid-cols-4">
       {courses.map((course) => (

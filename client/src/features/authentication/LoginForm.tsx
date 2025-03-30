@@ -1,14 +1,28 @@
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../../ui/form";
 import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
 
 import { FieldValues, useForm } from "react-hook-form";
 import { useLogin } from "./useLogin";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema } from "../../schemas/loginFormSchema";
+import { z } from "zod";
 
 export default function LoginForm() {
-  const { register, handleSubmit, formState } = useForm();
-
-  const { errors } = formState;
+  const form = useForm<z.infer<typeof loginFormSchema>>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
 
   const { login, isPending, loginError } = useLogin();
 
@@ -18,51 +32,53 @@ export default function LoginForm() {
   }
 
   return (
-    <Form type="regular" onSubmit={handleSubmit(onSubmit)}>
-      <FormRow
-        label="Username"
-        orientation="vertical"
-        error={errors.username?.message?.toString()}
-      >
-        <Input
-          type="username"
-          id="username"
-          autoComplete="username"
-          disabled={isPending}
-          {...register("username", {
-            required: "Це поле обовʼязкове",
-            minLength: {
-              value: 5,
-              message: "Username має містити більше 10 символів",
-            },
-          })}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <FormField
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username чи Email</FormLabel>
+              <FormControl>
+                <Input
+                  type="username"
+                  id="username"
+                  autoComplete="username"
+                  disabled={isPending}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </FormRow>
-
-      <FormRow
-        label="Пароль"
-        orientation="vertical"
-        error={errors.password?.message?.toString()}
-      >
-        <Input
-          type="password"
-          id="password"
-          autoComplete="password"
-          disabled={isPending}
-          {...register("password", {
-            required: "Це поле обовʼязкове",
-            minLength: {
-              value: 5,
-              message: "Пароль має містити більше 10 символів",
-            },
-          })}
+        <FormField
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Пароль</FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  id="password"
+                  autoComplete="password"
+                  disabled={isPending}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </FormRow>
-      <FormRow orientation="vertical" error={loginError?.message}>
-        <button className="cursor-pointer">
-          {isPending ? "Вхід..." : "Увійти"}
-        </button>
-      </FormRow>
+        <div className="flex flex-col items-center justify-center gap-5">
+          <Button disabled={isPending} size="lg" type="submit">
+            {isPending ? "Вхід..." : "Увійти"}
+          </Button>
+          {loginError && (
+            <p className="text-destructive">{loginError.message}</p>
+          )}
+        </div>
+      </form>
     </Form>
   );
 }

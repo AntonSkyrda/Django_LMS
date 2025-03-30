@@ -114,6 +114,56 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@theme colors {
+  --color-sandy-beach-50: #fef7ee;
+  --color-sandy-beach-100: #fce7c8;
+  --color-sandy-beach-200: #fad9ae;
+  --color-sandy-beach-300: #f6bd7b;
+  --color-sandy-beach-400: #f19746;
+  --color-sandy-beach-500: #ed7a22;
+  --color-sandy-beach-600: #df6117;
+  --color-sandy-beach-700: #b94915;
+  --color-sandy-beach-800: #933b19;
+  --color-sandy-beach-900: #773217;
+  --color-sandy-beach-950: #40170a;
+
+  --color-norway-50: #f3f6ef;
+  --color-norway-100: #e5eadd;
+  --color-norway-200: #ccd7bf;
+  --color-norway-300: #b1c29e;
+  --color-norway-400: #8ea576;
+  --color-norway-500: #718a58;
+  --color-norway-600: #586c44;
+  --color-norway-700: #455437;
+  --color-norway-800: #39452f;
+  --color-norway-900: #323c2b;
+  --color-norway-950: #191f14;
+
+  --color-goldenrod-50: #fffaeb;
+  --color-goldenrod-100: #fdefc8;
+  --color-goldenrod-200: #fada7a;
+  --color-goldenrod-300: #f8c951;
+  --color-goldenrod-400: #f7b328;
+  --color-goldenrod-500: #f09210;
+  --color-goldenrod-600: #d56d0a;
+  --color-goldenrod-700: #b14b0c;
+  --color-goldenrod-800: #8f3b11;
+  --color-goldenrod-900: #763111;
+  --color-goldenrod-950: #441704;
+
+  --color-sandy-brown-50: #fef8ee;
+  --color-sandy-brown-100: #fdefd7;
+  --color-sandy-brown-200: #f9dcaf;
+  --color-sandy-brown-300: #f5c27c;
+  --color-sandy-brown-400: #f0a04b;
+  --color-sandy-brown-500: #ec8223;
+  --color-sandy-brown-600: #dd6919;
+  --color-sandy-brown-700: #b74f17;
+  --color-sandy-brown-800: #92401a;
+  --color-sandy-brown-900: #763618;
+  --color-sandy-brown-950: #3f190b;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -3,6 +3,15 @@ import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
+// async function fetchUser(token: string) {
+//   const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/users`, {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+//   console.log(res);
+// }
+
 export function useLogin() {
   // const queryClient = useQueryClient();
   const navigate = useNavigate();

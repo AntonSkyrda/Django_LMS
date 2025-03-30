@@ -1,5 +1,7 @@
+import CourseDetail from "../features/courses/CourseDetail";
+
 function Course() {
-  return <div>Course</div>;
+  return <CourseDetail />;
 }
 
 export default Course;

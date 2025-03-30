@@ -3,14 +3,17 @@ import { Home, Folders, Users, ClipboardList, Sheet } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
 } from "../ui/Sidebar";
+import { NavLink } from "react-router-dom";
 
 const items = [
   {
@@ -43,6 +46,7 @@ const items = [
 export default function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
+      <SidebarHeader>LMS</SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Навігація</SidebarGroupLabel>
@@ -50,12 +54,20 @@ export default function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton tooltip={item.title} asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
+                  <NavLink to={item.url}>
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        tooltip={item.title}
+                        asChild
+                        isActive={isActive}
+                      >
+                        <div>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </div>
+                      </SidebarMenuButton>
+                    )}
+                  </NavLink>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -63,6 +75,7 @@ export default function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
+      <SidebarFooter>User</SidebarFooter>
     </Sidebar>
   );
 }
